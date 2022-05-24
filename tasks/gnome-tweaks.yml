@@ -1,0 +1,11 @@
+- name: GNOME Preferences - stop desktop from showing in window 
+  dconf:
+    key: "/org/gnome/gnome-flashback/desktop"
+    value: "false"
+    state: present
+
+- name: GNOME Preferences - allow icons to show in tray
+  dconf:
+    key: "/org/gnome/gnome-flashback/status-notifier-watcher"
+    value: "false"
+    state: present

@@ -1,0 +1,28 @@
+# install and setup i3 to work with gnome
+- name: Install i3 
+  become: true
+  apt:
+    name:
+      - i3 
+  tags:
+    - install
+    - i3 
+- name: Clone i3-gnome 
+  ansible.builtin.git:
+    repo: 'https://github.com/i3-gnome/i3-gnome.git'
+    dest: "{{ lookup('env', 'HOME') }}/Documents/i3-gnome"
+  tags:
+    - install
+    - i3 
+- name: Build i3-gnome 
+  shell: "cd {{ lookup('env', 'HOME') }}/Documents/i3-gnome && make"
+  tags:
+    - install
+    - i3 
+- name: Install i3-gnome 
+  become: True
+  shell: "cd {{ lookup('env', 'HOME') }}/Documents/i3-gnome && make install"
+  tags:
+    - install
+    - i3 
+

@@ -1,0 +1,19 @@
+- hosts: localhost
+  pre_tasks:
+    - name: update repositories
+      changed_when: False
+      become: True
+      apt:
+        update_cache: yes
+        cache_valid_time: 300
+    - name: install deps
+      become: True
+      apt:
+          pkg:
+              - policykit-1-gnome
+              - gnome-flashback
+              - libtool-bin
+              - gnome-screensaver
+  tasks:
+    - include: tasks/i3-gnome.yml
+    - include: tasks/gnome-tweaks.yml
