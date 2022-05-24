@@ -14,6 +14,7 @@
               - gnome-flashback
               - libtool-bin
               - gnome-screensaver
+              - python3-psutil
   tasks:
     - include: tasks/i3-gnome.yml
     - include: tasks/gnome-tweaks.yml
